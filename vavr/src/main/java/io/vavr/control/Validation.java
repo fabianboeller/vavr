@@ -463,10 +463,7 @@ public interface Validation<E, T> extends Value<T>, Serializable {
      * @return An instance of {@code LenientValidation}
      */
     default LenientValidation<E, T> lenient() {
-        return LenientValidation.of(
-              isValid() ? List.empty() : List.of(getError()),
-              Option.of(getOrNull())
-        );
+        return LenientValidation.fromValidation(this);
     }
 
     @Override
